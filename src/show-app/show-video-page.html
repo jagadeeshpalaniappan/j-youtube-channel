@@ -52,7 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       properties: {
 
-        active: {
+        isElementVisible: {
           type: Boolean,
           observer: '_activeDidChange'
         },
@@ -82,11 +82,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.backAction();
       },
 
-      _activeDidChange: function(active) {
+      _activeDidChange: function(isElementVisible) {
 
-        if (active) {
+        if (isElementVisible) {
 
-          console.log("fire:: setup-toolbar (event)");
+          console.log("fire:: 'setup-toolbar' --based on [VIDEO] page");
 
           this.fire('setup-toolbar', {
             leftItemIcon: 'arrow-back',

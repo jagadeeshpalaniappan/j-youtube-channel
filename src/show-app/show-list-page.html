@@ -100,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 transform: scale3d(1.2, 1.2, 1);
             }
 
-            .active a {
+            .selected-list a {
                 color: white;
                 font-weight: bold;
             }
@@ -159,7 +159,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <ul class="nav" role="navigation">
                 <h2>Shows</h2>
 
-                <iron-selector selected="[[show.subroute]]" attr-for-selected="name" selected-class="active">
+                <iron-selector selected="[[show.subroute]]" attr-for-selected="name" selected-class="selected-list">
                     <template is="dom-repeat" items="[[shows]]" as="show">
                         <li name="[[show.subroute]]"><a href="/shows/[[show.subroute]]">[[show.name]]</a></li>
                     </template>
@@ -203,7 +203,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             properties: {
 
-                active: Boolean,
+                isElementVisible: Boolean,
 
                 subroute: Object,
 
@@ -259,7 +259,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
 
             observers: [
-                '_updateToolbar(active, smallScreen)'
+                '_updateToolbar(isElementVisible, smallScreen)'
             ],
 
             _itemSizes: {},
@@ -341,13 +341,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.openedDrawer = this.persistentDrawer;
             },
 
-            _updateToolbar: function (active, smallScreen) {
+            _updateToolbar: function (isElementVisible, smallScreen) {
 
                 console.log("_updateToolbar");
 
-                if (active) {
 
-                    console.log("fire:: setup-toolbar (event)");
+                if (isElementVisible) {
+
+                    console.log("fire:: 'setup-toolbar' --based on [LIST] page");
 
                     this.fire('setup-toolbar', {
                         leftItemIcon: smallScreen ? 'menu' : '',
