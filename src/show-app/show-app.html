@@ -167,7 +167,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </svg>
 
                     <!-- title -->
-                    <h1 class="title">Jagadeesh Channel</h1>
+                    <h1 id="titleId"  class="title">Jagadeesh Channel</h1>
                 </a>
 
 
@@ -215,6 +215,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log("_setupToolbar");
                 console.log(e.detail);
 
+                //Icon Change :: --depending on the View (Menu btn / Back btn)
                 this.$.leftItem.onclick = e.detail.leftItemClickAction;
 
                 if (e.detail.leftItemIcon) {
@@ -222,6 +223,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 } else {
                     this.$.leftItem.removeAttribute('icon');
                 }
+
+
+                var titleContent = e.detail.titleContent? e.detail.titleContent : "Jagadeesh Channel1";
+
+                //Title Change:: --depending on the View
+                //this.$.titleId.textContent = titleContent;
+
             },
 
             _onLocationChange: function () {
