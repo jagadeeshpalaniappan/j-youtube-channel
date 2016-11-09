@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!doctype html>
 <html>
   <head>
-    <title>Chrome developer channel</title>
+    <title>Jagadeesh Channel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
@@ -19,11 +19,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="manifest" href="/manifest.json">
 
     <script>
+
+
       // Setup Polymer options
       window.Polymer = {
         dom: 'shadow',
         lazyRegister: true
       };
+
+
       // Load webcomponentsjs polyfill if browser does not support native Web Components
       (function() {
         'use strict';
@@ -39,12 +43,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           document.head.appendChild(script);
         }
       })();
+
+
+
       // Load pre-caching Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('/service-worker.js');
         });
       }
+
+
     </script>
 
     <link rel="import" href="/src/show-app/show-app.html">

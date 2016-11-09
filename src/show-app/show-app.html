@@ -106,20 +106,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
+
+    <!-- ROUTING -->
     <app-location route="{{route}}"></app-location>
+
+
     <app-route
         route="{{route}}"
         pattern="/:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
-  
+
+
+
+
+    <!-- APP HEADER -->
+
     <app-header condenses reveals threshold="1">
+
+
       <app-toolbar>
+
+        <!-- MENU btn -or- BACK btn (depending on the route state) -->
         <paper-icon-button id="leftItem"></paper-icon-button>
 
 
 
         <a href="/" title="Developer Channel">
+
+          <!-- logo -->
           <svg class="chrome-logo" xmlns="http://www.w3.org/2000/svg" viewBox="15.5 15.5 224.5 224.5">
             <defs>
               <radialGradient cy="0" cx="0.5" id="r">
@@ -154,24 +169,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <path d="m228,78l-101,0a50,50 0 0 1 39,19l64,-16" opacity="0.05"/>
           </svg>
 
-
-
+          <!-- title -->
           <h1 class="title">Jagadeesh Channel</h1>
         </a>
 
 
 
       </app-toolbar>
+
+
     </app-header>
 
+
+    <!-- VIEW -->
     <iron-pages id="pages"
         role="main"
         selected="[[routeData.page]]"
         selected-attribute="active"
         attr-for-selected="name"
         fallback-selection="shows">
+
+      <!-- view: shows (default) -->
       <show-list-page name="shows" subroute="[[subroute]]"></show-list-page>
+
+      <!-- view: video -->
       <show-video-page name="video" subroute="[[subroute]]"></show-video-page>
+
+
     </iron-pages>
 
   </template>
@@ -191,6 +215,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _setupToolbar: function(e) {
+
+        console.log("_setupToolbar");
+        console.log(e.detail);
+
         this.$.leftItem.onclick = e.detail.leftItemClickAction;
 
         if (e.detail.leftItemIcon) {
@@ -201,9 +229,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _onLocationChange: function() {
+
+        console.log("_onLocationChange");
+
         this.$.pages.selectedItem.backAction = function() {
+          console.log("browser: back");
           window.history.back();
         };
+
       }
 
     });

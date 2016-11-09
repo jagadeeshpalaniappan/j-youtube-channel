@@ -25,7 +25,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
+
+
     <div class="video-frame">
+
       <google-youtube
           width="100%"
           height="calc(100vh - 64px)"
@@ -33,7 +36,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           rel="0"
           start="5"
           autoplay="1"></google-youtube>
+
+
     </div>
+
+
 
   </template>
 
@@ -76,12 +83,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _activeDidChange: function(active) {
+
         if (active) {
+
+          console.log("fire:: setup-toolbar (event)");
+
           this.fire('setup-toolbar', {
             leftItemIcon: 'arrow-back',
             leftItemClickAction: this._leftItemClicked.bind(this)
           });
         }
+
       }
 
     });
